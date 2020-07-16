@@ -9,4 +9,4 @@ dependencies {
   implementation 'com.github.jstN0body:DataManager:master-SNAPSHOT'
 }
 ```
-you can also download a jar from `/buils/libs/`
+you can also download a jar from `/build/libs/`
