@@ -1,6 +1,6 @@
 # DataManager
 to add to your gradle project:
-```
+```gradle
 repositories {
   maven { url 'https://jitpack.io'}
 }
