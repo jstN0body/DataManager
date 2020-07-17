@@ -69,4 +69,12 @@ public class Database {
         }
         return list.get(index);
     }
+
+    public boolean contains(double d) {
+        for (Object object : this.toList().toArray()) {
+            double e = Double.parseDouble((String) object);
+            if (d == e) return true;
+        }
+        return false;
+    }
 }
