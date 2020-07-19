@@ -9,4 +9,4 @@ dependencies {
   compile 'com.github.jstN0body:DataManager:master-SNAPSHOT'
 }
 ```
-you can also download a jar from `/build/libs/` or click [here](https://github.com/jstN0body/DataManager/raw/master/build/libs/DataManager-1.0-SNAPSHOT.jar)
+you can also download a jar from `/build/libs/` or click [here](https://github.com/jstN0body/DataManager/raw/master/build/libs/DataManager-2.2.jar)
