@@ -75,7 +75,7 @@ public class StringDatabase extends Database {
     @Override
     public boolean contains(String s) {
         for (Object object : this.toList().toArray()) {
-            double e = Double.parseDouble((String) object);
+            String e = (String) object;
             if (s.equals(e)) return true;
         }
         return false;
