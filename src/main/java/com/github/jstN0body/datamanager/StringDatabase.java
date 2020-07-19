@@ -45,12 +45,12 @@ public class StringDatabase extends Database {
         }
     }
 
-    public List<Double> toList() {
-        List<Double> list = new ArrayList<>();
+    public List<String> toList() {
+        List<String> list = new ArrayList<>();
         try {
             Scanner scanner = new Scanner(this.file);
-            while (scanner.hasNextDouble()) {
-                list.add(scanner.nextDouble());
+            while (scanner.hasNextLine()) {
+                list.add(scanner.nextLine());
             }
         } catch (Exception e) {
             e.printStackTrace();
