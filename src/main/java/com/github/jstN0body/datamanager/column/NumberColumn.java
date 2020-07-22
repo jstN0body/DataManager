@@ -1,4 +1,4 @@
-package com.github.jstN0body.datamanager;
+package com.github.jstN0body.datamanager.column;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class NumberDatabase extends Database {
+public class NumberColumn extends Column {
+
 
     private final List<Double> list = new ArrayList<>();
 
-    public NumberDatabase(File file) {
-        super(file);
+    public NumberColumn(String label, String pathToFolder) {
+        super(label, pathToFolder);
     }
 
     @Override
@@ -36,7 +37,7 @@ public class NumberDatabase extends Database {
         for (double d : doubles) {
             list.add(d);
             try {
-                FileWriter fileWriter = new FileWriter(file, true);
+                FileWriter fileWriter = new FileWriter(FILE, true);
                 fileWriter.append(d + "\n");
                 fileWriter.close();
             } catch (Exception e) {
@@ -45,10 +46,11 @@ public class NumberDatabase extends Database {
         }
     }
 
+
     public List<Double> toList() {
         List<Double> list = new ArrayList<>();
         try {
-            Scanner scanner = new Scanner(this.file);
+            Scanner scanner = new Scanner(this.FILE);
             while (scanner.hasNextDouble()) {
                 list.add(scanner.nextDouble());
             }
@@ -58,11 +60,12 @@ public class NumberDatabase extends Database {
         return list;
     }
 
+
     @Override
     public double getDouble(int index) {
         List<Double> list = new ArrayList<>();
         try {
-            Scanner scanner = new Scanner(file);
+            Scanner scanner = new Scanner(FILE);
             while (scanner.hasNextDouble()) {
                 list.add(scanner.nextDouble());
             }
@@ -72,12 +75,9 @@ public class NumberDatabase extends Database {
         return list.get(index);
     }
 
+
     @Override
     public boolean contains(double d) {
-        for (Object object : this.toList().toArray()) {
-            double e = Double.parseDouble((String) object);
-            if (d == e) return true;
-        }
-        return false;
+        return this.toList().contains(d);
     }
 }

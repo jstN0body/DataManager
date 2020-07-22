@@ -1,4 +1,4 @@
-package com.github.jstN0body.datamanager;
+package com.github.jstN0body.datamanager.column;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -6,13 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class StringDatabase extends Database {
+public class StringColumn extends Column {
 
     private final List<String> list = new ArrayList<>();
 
-    public StringDatabase(File file) {
-        super(file);
+    public StringColumn(String label, String pathToFolder) {
+        super(label, pathToFolder);
     }
+
 
     @Override
     public void loadData(File file) {
@@ -36,7 +37,7 @@ public class StringDatabase extends Database {
         for (String s : strings) {
             list.add(s);
             try {
-                FileWriter fileWriter = new FileWriter(file, true);
+                FileWriter fileWriter = new FileWriter(FILE, true);
                 fileWriter.append(s + "\n");
                 fileWriter.close();
             } catch (Exception e) {
@@ -48,7 +49,7 @@ public class StringDatabase extends Database {
     public List<String> toList() {
         List<String> list = new ArrayList<>();
         try {
-            Scanner scanner = new Scanner(this.file);
+            Scanner scanner = new Scanner(this.FILE);
             while (scanner.hasNextLine()) {
                 list.add(scanner.nextLine());
             }
@@ -62,7 +63,7 @@ public class StringDatabase extends Database {
     public String getString(int index) {
         List<String> list = new ArrayList<>();
         try {
-            Scanner scanner = new Scanner(file);
+            Scanner scanner = new Scanner(FILE);
             while (scanner.hasNextLine()) {
                 list.add(scanner.nextLine());
             }
@@ -74,10 +75,6 @@ public class StringDatabase extends Database {
 
     @Override
     public boolean contains(String s) {
-        for (Object object : this.toList().toArray()) {
-            String e = (String) object;
-            if (s.equals(e)) return true;
-        }
-        return false;
+        return this.toList().contains(s);
     }
 }
